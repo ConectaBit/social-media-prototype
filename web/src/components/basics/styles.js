@@ -30,16 +30,16 @@ export const Input = styled.input`
 
 export const Button = styled.button`
     padding: 1rem;
-    width: 15rem;
-    align-self: center;
-    margin: 1rem;
+    width: 11rem;
+    margin: auto;
     border: 1px solid #D2D7D9;
     border-radius: 5px;
     font-size: 16px;
-    background: #39B9CB;
+    background: ${props => props.bg || '#39B9CB'} ;
     color: #FFF;
     font-weight: 600;
     letter-spacing: 2px;
+    text-transform: uppercase;
 
     :hover{
         cursor: pointer;
@@ -50,4 +50,5 @@ export const Button = styled.button`
 export const Flex = styled.div`
     display: flex;
     flex-direction: ${props => props.direction || 'row'};
+    justify-content: ${props => props.justify || 'center'};
 `;

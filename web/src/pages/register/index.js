@@ -12,7 +12,10 @@ function Register() {
           <Input placeholder='Nome'/>
           <Input placeholder='Email' type='email' />
           <Input placeholder='Senha' type='password' />
-          <Button value='submit' type='submit'>Cadastrar</ Button>
+          <Flex direction='row' justify='space-between'>
+            <Button value='submit' type='submit'>Cadastrar</Button>
+            <Button value='submit' type='submit' bg='#44BF76'>Login</Button>
+          </Flex>
         </Flex>
       </Box>
     </>
