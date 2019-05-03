@@ -1,12 +1,10 @@
 import React from 'react';
-import Header from './components/header'
-import Register from './components/register'
+import Routes from './routes'
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Register />
+      <Routes />
     </div>
   );
 }

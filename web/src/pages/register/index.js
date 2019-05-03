@@ -1,9 +1,11 @@
 import React from 'react';
-import {Box, Input, Button, Flex} from './styles'
-
+import {Box, Input, Button, Flex} from '../../components/basics/styles'
+import Header from '../../components/header'
 
 function Register() {
-    return (
+  return(
+    <>
+      <Header />
       <Box direction='column'>
         <h1>Cadastro de Usuário</h1>
         <Flex direction='column'>
@@ -13,7 +15,8 @@ function Register() {
           <Button value='submit' type='submit'>Cadastrar</ Button>
         </Flex>
       </Box>
-    );
+    </>
+  );
 }
 
 export default Register;
