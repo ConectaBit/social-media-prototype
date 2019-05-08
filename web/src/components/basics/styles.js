@@ -22,9 +22,11 @@ export const Input = styled.input`
     border-radius: 5px;
     border: 0;
     background: #F0F0F2;
+    border: 3px solid transparent;
 
     :focus{
         background: #FFF;
+        border: 3px solid gray;
     }
 `;
 
@@ -51,4 +53,5 @@ export const Flex = styled.div`
     display: flex;
     flex-direction: ${props => props.direction || 'row'};
     justify-content: ${props => props.justify || 'center'};
+    align-items: ${props => props.align || 'auto'};
 `;
