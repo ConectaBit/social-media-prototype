@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const USERS = gql `
     query{
-        users(first: 10, offset: ${offset} || 0){
+        users(first: 10, $offset: Int || 0){
             id
             name
             email
