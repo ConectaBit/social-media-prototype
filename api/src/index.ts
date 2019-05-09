@@ -5,7 +5,7 @@ import db from './models';
 import { normalizePort, onError, onListening } from './utils/utils';
 
 const server = http.createServer(app);
-const port = normalizePort(process.env.port || 8080);
+const port = normalizePort(process.env.port || 3001);
 
 db.sequelize.sync()
     .then(() => {
