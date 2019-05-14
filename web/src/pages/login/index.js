@@ -3,13 +3,14 @@ import {Box, Input, Button, Flex} from '../../components/basics/styles'
 import Header from '../../components/header'
 import { NavLink } from 'react-router-dom';
 import gql from 'graphql-tag';
+
 import { Mutation } from 'react-apollo';
+import { InMemoryCache } from 'apollo-boost';
 
 function Login() {
 
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const [token, setToken] = useState(null);
 
   const CREATE_TOKEN = gql`
     mutation createToken($email: String!, $password: String!){
@@ -19,15 +20,14 @@ function Login() {
     }
   `;
 
-
-
   return(
     <Mutation mutation={CREATE_TOKEN}>
     {(createToken, {data, loading, error}) => {
       if(data){
+        const token = data.createToken.token
         console.log(data)
-        setToken(data.createToken.token)
-        return <>Deu certo | Token: {token}</>
+        localStorage.setItem('access-token', token)
+        return <>Deu certo | Token: {localStorage.getItem('access-token')}</>
       }
 
       if(loading){

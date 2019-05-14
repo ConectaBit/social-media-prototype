@@ -5,7 +5,7 @@ const httpLink = new HttpLink({uri: 'http://localhost:3001/graphql'});
 const authLink = new ApolloLink((operation, forward) => {
     //Retrieve the authorization token from local storage
 
-    const token = localStorage.getItem('access-token');
+        const token = localStorage.getItem('access-token');
         const uid = localStorage.getItem('uid');
         const client = localStorage.getItem('client');
 
