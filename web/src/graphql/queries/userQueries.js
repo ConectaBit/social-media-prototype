@@ -1,6 +1,6 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
-export const USERS = gql `
+export const USERS = gql`
     query{
         users(first: 10, $offset: Int || 0){
             id
@@ -14,7 +14,7 @@ export const USERS = gql `
     }
 `;
 
-export const USER = gql `
+export const USER = gql`
     query{
 	user(id: ${userID}){
     id

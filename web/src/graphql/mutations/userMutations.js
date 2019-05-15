@@ -1,9 +1,9 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const CREATE_TOKEN = gql`
   mutation createToken($email: String!, $password: String!) {
-      token
-    }
+    token
+  }
 `;
 
 export const CREATE_USER = gql`
