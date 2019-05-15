@@ -4,7 +4,7 @@ import { DbConnection } from "./DbConnectionInterface";
 export interface ResolverContext {
 
     db?: DbConnection;
-    autorization?: string; //token
+    authorization?: string; //token
     authUser?: AuthUser;
 
 }

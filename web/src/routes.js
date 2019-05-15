@@ -9,8 +9,8 @@ function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exat={true} path="/login" component={Login} />
-        <Route exat={true} path="/feed" component={Feed} />
+        <Route path="/login" component={Login} />
+        <Route path="/feed" component={Feed} />
         <Route exat={true} path="/" component={Register} />
       </Switch>
     </BrowserRouter>
