@@ -1,8 +1,4 @@
-import React, { useState } from "react";
-
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
-
+import React from "react";
 import styled from "styled-components";
 import logo from "../header/logo.png";
 
@@ -14,8 +10,7 @@ const Bar = styled.header`
 
   display: flex;
   flex-direction: column;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 
   img {
     height: 5rem;
@@ -28,37 +23,10 @@ const Bar = styled.header`
 `;
 
 function Header() {
-  const [userName, setUserName] = useState("");
-  const [userPhoto, setUserPhoto] = useState("");
-
-  function userFetch() {
-    const token = localStorage.getItem("access-token");
-  }
-
-  const CURRENT_USER = gql`
-    query currentUser {
-      currentUser {
-        id
-        name
-        photo
-      }
-    }
-  `;
-
   return (
-    <Query query={CURRENT_USER}>
-      {({ loading, error, data }) => {
-        return (
-          <Bar>
-            <img src={logo} />
-            <div>
-              <span>{userName}</span>
-              <span>{userPhoto}</span>
-            </div>
-          </Bar>
-        );
-      }}
-    </Query>
+    <Bar>
+      <img src={logo} alt="logo" />
+    </Bar>
   );
 }
 export default Header;

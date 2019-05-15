@@ -3,12 +3,14 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Register from "./pages/register";
 import Login from "./pages/login";
+import Feed from './pages/feed';
 
 function Routes() {
   return (
     <BrowserRouter>
       <Switch>
         <Route exat={true} path="/login" component={Login} />
+        <Route exat={true} path="/feed" component={Feed} />
         <Route exat={true} path="/" component={Register} />
       </Switch>
     </BrowserRouter>

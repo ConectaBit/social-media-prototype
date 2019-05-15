@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Box, Input, Button, Flex } from "../../components/basics/styles";
-import Header from "../../components/header";
 import { NavLink } from "react-router-dom";
 import gql from "graphql-tag";
 
@@ -34,11 +33,9 @@ function Login() {
 
         if (error) {
           return <>Errrou</>;
-          console.log(error);
         }
         return (
           <>
-            <Header />
             <Box direction="column">
               <h1>Login</h1>
               <Flex direction="column">

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Box, Input, Button, Flex } from "../../components/basics/styles";
-import Header from "../../components/header";
 import { NavLink } from "react-router-dom";
 
 import gql from "graphql-tag";
@@ -42,7 +41,6 @@ function Register() {
         }
         return (
           <>
-            <Header />
             <Box direction="column">
               <h1>Cadastro de Usuário</h1>
               <Flex direction="column">

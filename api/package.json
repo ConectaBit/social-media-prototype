@@ -28,6 +28,7 @@
     "typescript": "^3.4.1"
   },
   "dependencies": {
+    "apollo-link-context": "^1.0.17",
     "cors": "2.8.4",
     "express": "4.16.2",
     "express-graphql": "0.6.11",
