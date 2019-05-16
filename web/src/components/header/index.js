@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../header/logo.png";
+import { Flex } from "../basics/styles";
+import { Link } from "react-router-dom";
 
 const Bar = styled.header`
   height: 5rem;
@@ -25,7 +27,10 @@ const Bar = styled.header`
 function Header() {
   return (
     <Bar>
-      <img src={logo} alt="logo" />
+      <Flex>
+        <img src={logo} alt="logo" />
+        <Link to="/logout">Sair</Link>
+      </Flex>
     </Bar>
   );
 }

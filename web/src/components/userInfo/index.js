@@ -1,40 +1,39 @@
 import React from "react";
-import { Box } from "../basics/styles";
+import { Box, Flex } from "../basics/styles";
 
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
-const CurrentUserQuery = gql`
-  query {
-    currentUser {
-      id
-      name
-      photo
-    }
-  }
-`;
-
 function UserInfo() {
+  const CurrentUserQuery = gql`
+    query {
+      currentUser {
+        id
+        name
+        photo
+      }
+    }
+  `;
+
   return (
     <Query query={CurrentUserQuery}>
       {({ client, loading, data }) => {
         if (loading) {
-          return <>Carregando...</>
+          return <>Carregando...</>;
         }
 
-        if(data){
+        if (data) {
           const userName = data.currentUser.name;
-          const userId = data.currentUser.id;
-          return <>
-                <span>Name: {userName}</span>
-                <span>Id: {userId}</span>
-                </>
+          return (
+            <>
+              <Box>
+                <Flex direction="column">
+                  <span>{userName}</span>
+                </Flex>
+              </Box>
+            </>
+          );
         }
-        return (
-          <>
-            <Box>UserInfo Component</Box>
-          </>
-        );
       }}
     </Query>
   );
