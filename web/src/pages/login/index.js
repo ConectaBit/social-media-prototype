@@ -62,7 +62,7 @@ function Login() {
                   <Button value="submit" type="submit">
                     Entrar
                   </Button>
-                  <NavLink to="/" replace>
+                  <NavLink to="/register" replace>
                     Cadastre-se
                   </NavLink>
                 </form>
