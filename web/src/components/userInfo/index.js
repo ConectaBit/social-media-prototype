@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Flex } from "../basics/styles";
 
 import { Query } from "react-apollo";
@@ -15,6 +15,9 @@ function UserInfo() {
     }
   `;
 
+  const [userName, setUsername] = useState("");
+  const [userPhoto, setUserPhoto] = useState("");
+
   return (
     <Query query={CurrentUserQuery}>
       {({ client, loading, data }) => {
@@ -23,12 +26,14 @@ function UserInfo() {
         }
 
         if (data) {
-          const userName = data.currentUser.name;
+          setUsername(data.currentUser.name);
+          setUserPhoto(data.currentUser.photo);
           return (
             <>
               <Box>
                 <Flex direction="column">
                   <span>{userName}</span>
+                  <span>{userPhoto ? userPhoto : "sem foto de perfil"}</span>
                 </Flex>
               </Box>
             </>

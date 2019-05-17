@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Input, Button, Flex } from "../../components/basics/styles";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import gql from "graphql-tag";
 
 import { Mutation } from "react-apollo";
@@ -24,7 +24,7 @@ function Login() {
           const token = data.createToken.token;
           console.log(data);
           localStorage.setItem("access-token", token);
-          return <>Deu certo | Token: {localStorage.getItem("access-token")}</>;
+          return <Redirect to="/home" />;
         }
 
         if (loading) {

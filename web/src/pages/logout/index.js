@@ -7,7 +7,7 @@ function Logout() {
 
   return (
     <>
-      <Link to="/login">Voltar</Link>
+      <Link to="/public">Voltar</Link>
     </>
   );
 }
