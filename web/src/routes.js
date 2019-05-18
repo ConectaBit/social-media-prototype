@@ -6,6 +6,7 @@ import Login from "./pages/login";
 import Logout from "./pages/logout";
 import Feed from "./pages/feed";
 import Public from "./pages/public";
+import CreatePost from './pages/createPost';
 
 function Routes() {
   function isAuth() {
@@ -21,7 +22,7 @@ function Routes() {
 
         <Route path="/home" render={() => (isAuth() ? <Feed /> : <Login />)} />
         <Route path="/logout" component={Logout} />
-
+        <Route path='/create' component={CreatePost}/>
         <Route
           exat={true}
           path="/"

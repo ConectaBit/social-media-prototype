@@ -1,14 +1,17 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import Header from "../../components/header";
 import UserInfo from "../../components/userInfo";
-import PostForm from '../../components/postForm' 
+import { Button } from "../../components/basics/styles";
+
 function Feed() {
   return (
     <>
       <Header />
       <UserInfo />
-      <PostForm />
+      <Link to="/create">
+        <Button>Criar Post</Button>
+      </Link>
     </>
   );
 }
