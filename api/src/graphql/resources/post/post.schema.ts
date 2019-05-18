@@ -3,7 +3,7 @@ const postTypes = `
     type Post {
         id: ID!
         title: String!
-        conten: String!
+        content: String!
         photo: String!
         createdAt: String!
         updatedAt: String!

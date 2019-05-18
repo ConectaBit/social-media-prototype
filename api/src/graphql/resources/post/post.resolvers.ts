@@ -32,7 +32,6 @@ export const postResolvers = {
 
     },
 
-
     Query: {
 
         posts: (parent, {first = 10, offset = 0}, {db}: {db: DbConnection}, info: GraphQLResolveInfo) => {
