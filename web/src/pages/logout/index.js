@@ -1,13 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 function Logout() {
   localStorage.clear();
   localStorage.setItem("access-token", "");
 
+  function isAuth(){
+    return localStorage.getItem('access-token') === '' ? false : true
+  }
+
+  function changeComponent(){
+    if(isAuth()){
+      return <>Saindo...</>
+    }
+
+    return <Redirect to='/public'/>
+  }
+
   return (
     <>
-      <Link to="/public">Voltar</Link>
+      {changeComponent()}
     </>
   );
 }
