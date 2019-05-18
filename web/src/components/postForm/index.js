@@ -11,9 +11,7 @@ function PostForm() {
 
   const CREATE_POST = gql`
     mutation createPost($title: String!, $content: String!, $photo: String!) {
-      createPost(
-        input: { title: $title, content: $content, photo: $photo }
-      ) {
+      createPost(input: { title: $title, content: $content, photo: $photo }) {
         title
         content
       }
@@ -29,6 +27,16 @@ function PostForm() {
 
         if (data) {
           alert("Post criado");
+          return (
+            <>
+              <Box>
+                <Flex direction='column'>
+                <h1>{data.createPost.title}</h1>
+                <p>{data.createPost.content}</p>
+                </Flex>
+              </Box>
+            </>
+          );
         }
         return (
           <Box>
