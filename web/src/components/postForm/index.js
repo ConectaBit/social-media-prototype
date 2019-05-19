@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Mutation } from "react-apollo";
+import { Link } from "react-router-dom";
 
 import gql from "graphql-tag";
 import { Box, Flex, Button, Input } from "../basics/styles";
@@ -30,10 +31,12 @@ function PostForm() {
           return (
             <>
               <Box>
-                <Flex direction='column'>
-                <h1>{data.createPost.title}</h1>
-                <p>{data.createPost.content}</p>
+                <Flex direction="column">
+                  <h1>{data.createPost.title}</h1>
+                  <p>{data.createPost.content}</p>
+                  <Link to='home'><Button>Home</Button></Link>
                 </Flex>
+                
               </Box>
             </>
           );
