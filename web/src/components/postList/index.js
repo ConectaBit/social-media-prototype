@@ -42,7 +42,7 @@ function PostList() {
   }
 
   function NextIsDisabled() {
-    return posts.length === 0 ? true : false;
+    return posts.length < 10 ? true : false;
   }
   return (
     <>
@@ -79,8 +79,9 @@ function PostList() {
       >
         Anterior
       </Button>
-      {}
-      <Button disabled={NextIsDisabled()} onClick={() => dispatch("increment")}>Próximo</Button>
+      <Button disabled={NextIsDisabled()} onClick={() => dispatch("increment")}>
+        Próximo
+      </Button>
     </>
   );
 }
