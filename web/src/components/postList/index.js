@@ -23,7 +23,7 @@ function PostList() {
   const [count, dispatch] = useReducer(reducer, initialState);
 
   const POST_LIST = gql`
-    query GetPosts($first: Int!, $offset: Int!){
+    query GetPosts($first: Int!, $offset: Int!) {
       posts(first: $first, offset: $offset) {
         id
         title
@@ -37,9 +37,16 @@ function PostList() {
     }
   `;
 
+  function PreviousIsDisabled() {
+    return count <= 1 ? true : false;
+  }
+
+  function NextIsDisabled() {
+    return posts.length === 0 ? true : false;
+  }
   return (
     <>
-      <Query query={POST_LIST} variables={{first: 10, offset: count * 10}}>
+      <Query query={POST_LIST} variables={{ first: 10, offset: count * 10 }}>
         {({ loading, error, data }) => {
           if (loading) {
             return <>Loading...</>;
@@ -66,9 +73,14 @@ function PostList() {
         }}
       </Query>
 
-      <Button onClick={() => dispatch('decrement')}>Anterior</Button>
+      <Button
+        disabled={PreviousIsDisabled()}
+        onClick={() => dispatch("decrement")}
+      >
+        Anterior
+      </Button>
       {}
-      <Button onClick={() => dispatch('increment')}>Próximo</Button>
+      <Button disabled={NextIsDisabled()} onClick={() => dispatch("increment")}>Próximo</Button>
     </>
   );
 }
