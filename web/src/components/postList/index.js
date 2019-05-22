@@ -1,5 +1,6 @@
 import React, { useState, useReducer } from "react";
 import { Box, Flex, Button } from "../basics/styles";
+import Comment from '../comment'
 
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
@@ -68,6 +69,7 @@ function PostList() {
                 <span>Autor: {posts.author.name}</span>
                 <span>Updatad at: {posts.updatedAt}</span>
               </Flex>
+              <Comment postId={posts.id}/>
             </Box>
           ));
         }}

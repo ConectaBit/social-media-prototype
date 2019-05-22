@@ -47,6 +47,10 @@ export const Button = styled.button`
     cursor: pointer;
     opacity: 0.8;
   }
+
+  :disabled {
+    cursor: not-allowed;
+  }
 `;
 
 export const Flex = styled.div`
