@@ -8,6 +8,7 @@ import { Mutation } from "react-apollo";
 function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [message, setMessage] = useState('');
 
   const CREATE_TOKEN = gql`
     mutation createToken($email: String!, $password: String!) {
@@ -32,13 +33,14 @@ function Login() {
         }
 
         if (error) {
-          return <>Errrou</>;
+          setMessage('Strong email or password')
         }
         return (
           <>
             <Box direction="column">
               <h1>Login</h1>
               <Flex direction="column">
+                <span>{message}</span>
                 <form
                   onSubmit={e => {
                     createToken({
@@ -50,11 +52,13 @@ function Login() {
                   }}
                 >
                   <Input
+                    required
                     placeholder="Email"
                     type="email"
                     onChange={e => setEmail(e.target.value)}
                   />
                   <Input
+                    required
                     placeholder="Senha"
                     type="password"
                     onChange={e => setPass(e.target.value)}

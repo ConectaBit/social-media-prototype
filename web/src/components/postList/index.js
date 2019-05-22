@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from "react";
 import { Box, Flex, Button } from "../basics/styles";
-import Comment from '../comment'
+import Comment from "../comment";
 
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
@@ -69,21 +69,25 @@ function PostList() {
                 <span>Autor: {posts.author.name}</span>
                 <span>Updatad at: {posts.updatedAt}</span>
               </Flex>
-              <Comment postId={posts.id}/>
+              <Comment postId={posts.id} />
             </Box>
           ));
         }}
       </Query>
-
-      <Button
-        disabled={PreviousIsDisabled()}
-        onClick={() => dispatch("decrement")}
-      >
-        Anterior
-      </Button>
-      <Button disabled={NextIsDisabled()} onClick={() => dispatch("increment")}>
-        Próximo
-      </Button>
+      <Flex justify="space-between">
+        <Button
+          disabled={PreviousIsDisabled()}
+          onClick={() => dispatch("decrement")}
+        >
+          Anterior
+        </Button>
+        <Button
+          disabled={NextIsDisabled()}
+          onClick={() => dispatch("increment")}
+        >
+          Próximo
+        </Button>
+      </Flex>
     </>
   );
 }
