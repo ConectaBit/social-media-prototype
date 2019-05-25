@@ -1,17 +1,16 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { isAuth } from "../src/utils";
 
 import Register from "./pages/register";
 import Login from "./pages/login";
 import Logout from "./pages/logout";
 import Feed from "./pages/feed";
 import Public from "./pages/public";
-import CreatePost from './pages/createPost';
+import CreatePost from "./pages/createPost";
+import PostDetails from "./pages/postDetails";
 
-function Routes() {
-  function isAuth() {
-    return localStorage.getItem("access-token") ? true : false;
-  }
+function Routes(props) {
   return (
     <BrowserRouter>
       <Switch>
@@ -22,7 +21,17 @@ function Routes() {
 
         <Route path="/home" render={() => (isAuth() ? <Feed /> : <Login />)} />
         <Route path="/logout" component={Logout} />
-        <Route path='/create' component={CreatePost}/>
+        <Route path="/create" component={CreatePost} />
+        <Route
+          path="/post/:id"
+          render={props =>
+            isAuth() ? (
+              <PostDetails postId={props.match.params.id} />
+            ) : (
+              <Redirect to="/register" />
+            )
+          }
+        />
         <Route
           exat={true}
           path="/"

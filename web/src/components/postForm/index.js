@@ -34,9 +34,10 @@ function PostForm() {
                 <Flex direction="column">
                   <h1>{data.createPost.title}</h1>
                   <p>{data.createPost.content}</p>
-                  <Link to='home'><Button>Home</Button></Link>
+                  <Link to="home">
+                    <Button>Home</Button>
+                  </Link>
                 </Flex>
-                
               </Box>
             </>
           );

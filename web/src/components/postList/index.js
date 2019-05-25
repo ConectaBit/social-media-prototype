@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from "react";
 import { Box, Flex, Button } from "../basics/styles";
-import Comment from "../comment";
+import { Link } from "react-router-dom";
 
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
@@ -62,15 +62,17 @@ function PostList() {
           }
 
           return posts.map(posts => (
-            <Box key={posts.id}>
-              <Flex direction="column">
-                <h1>{posts.title}</h1>
-                <h3>{posts.content}</h3>
-                <span>Autor: {posts.author.name}</span>
-                <span>Updatad at: {posts.updatedAt}</span>
-              </Flex>
-              <Comment postId={posts.id} />
-            </Box>
+            <>
+              <Box key={posts.id}>
+                <Flex direction="column">
+                  <h1>{posts.title}</h1>
+                  <h3>{posts.content}</h3>
+                  <span>Autor: {posts.author.name}</span>
+                  <span>Updatad at: {posts.updatedAt}</span>
+                  <Link to={`/post/id:${posts.id}`}>Detalhes</Link>
+                </Flex>
+              </Box>
+            </>
           ));
         }}
       </Query>
