@@ -62,17 +62,15 @@ function PostList() {
           }
 
           return posts.map(posts => (
-            <>
-              <Box key={posts.id}>
-                <Flex direction="column">
-                  <h1>{posts.title}</h1>
-                  <h3>{posts.content}</h3>
-                  <span>Autor: {posts.author.name}</span>
-                  <span>Updatad at: {posts.updatedAt}</span>
-                  <Link to={`/post/id:${posts.id}`}>Detalhes</Link>
-                </Flex>
-              </Box>
-            </>
+            <Box key={posts.id}>
+              <Flex direction="column">
+                <h1>{posts.title}</h1>
+                <h3>{posts.content}</h3>
+                <span>Autor: {posts.author.name}</span>
+                <span>Updatad at: {posts.updatedAt}</span>
+                <Link to={`/post/id:${posts.id}`}>Detalhes</Link>
+              </Flex>
+            </Box>
           ));
         }}
       </Query>

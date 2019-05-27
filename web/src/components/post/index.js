@@ -33,10 +33,11 @@ function Post(props) {
         const postInfo = data.post;
 
         return (
-          <Box>
+          <Box key={postInfo.id}>
             <Flex direction="column">
               <h1>{postInfo.title}</h1>
               <p>{postInfo.content}</p>
+              <p>{postInfo.photo}</p>
             </Flex>
           </Box>
         );
