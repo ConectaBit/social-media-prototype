@@ -10,7 +10,12 @@ function Post(props) {
       post(id: $id) {
         id
         title
+        photo
         content
+        comments {
+          comment
+          id
+        }
       }
     }
   `;
@@ -33,13 +38,25 @@ function Post(props) {
         const postInfo = data.post;
 
         return (
-          <Box key={postInfo.id}>
-            <Flex direction="column">
-              <h1>{postInfo.title}</h1>
-              <p>{postInfo.content}</p>
-              <p>{postInfo.photo}</p>
-            </Flex>
-          </Box>
+          <>
+            <Box key={postInfo.id}>
+              <Flex direction="column">
+                <h1>{postInfo.title}</h1>
+                <p>{postInfo.content}</p>
+                <p>{postInfo.photo}</p>
+              </Flex>
+              <Flex direction='column'>
+                Comentários ({postInfo.comments.length}):
+                {postInfo.comments.length === 0 ? (
+                  <span>Ainda não há comentários</span>
+                ) : (
+                  postInfo.comments.map(comment => (
+                    <span key={comment.id}>{comment.comment}</span>
+                  ))
+                )}
+              </Flex>
+            </Box>
+          </>
         );
       }}
     </Query>
