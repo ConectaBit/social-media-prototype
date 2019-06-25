@@ -45,8 +45,9 @@ export default (
       },
 
       tags: {
-        type: DataTypes.ARRAY,
-        allowNull: true
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: true,
+        defaultValue: []
       }
     },
     {
