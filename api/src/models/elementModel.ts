@@ -20,32 +20,39 @@ export interface ElementModel
   extends BaseModelInterface,
     Sequelize.Model<ElementInstance, ElementAttributes> {}
 
-export default (Sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes): ElementModel => {
-    const Element: ElementModel = Sequelize.define('Element', {
-        id:{
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
+export default (
+  Sequelize: Sequelize.Sequelize,
+  DataTypes: Sequelize.DataTypes
+): ElementModel => {
+  const Element: ElementModel = Sequelize.define(
+    "Element",
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+      },
 
-        description: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
 
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
 
-        tags: {
-            type: DataTypes.ARRAY,
-            allowNull: true
-        }
-    }, {
-        tableName: 'elements'
-    });
+      tags: {
+        type: DataTypes.ARRAY,
+        allowNull: true
+      }
+    },
+    {
+      tableName: "elements"
+    }
+  );
 
-    return Element;
-}
+  return Element;
+};
