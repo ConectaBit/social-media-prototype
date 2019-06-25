@@ -8,7 +8,7 @@ export interface ElementAttributes {
   id?: number;
   description?: string;
   name?: string;
-  tags?: string[];
+  //tags?: string[];
   createdAt?: string;
   updatedAt?: string;
 }
@@ -44,11 +44,10 @@ export default (
         allowNull: false
       },
 
-      tags: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: true,
-        defaultValue: []
-      }
+      //tags: {
+      //  type: DataTypes.ARRAY(DataTypes.STRING),
+      //  allowNull: true
+      //}
     },
     {
       tableName: "elements"
