@@ -1,11 +1,13 @@
 const userTypes = `
 
     # User definition type
+    
     type User {
         id: ID!
         name: String!
         email: String!
         photo: String
+        class: String!
         createdAt: String!
         updatedAt: String!
         posts(first: Int, offset: Int): [ Post! ]!
@@ -15,12 +17,14 @@ const userTypes = `
         name: String!
         email: String!
         password: String!
+        class: String!
     }
 
     input UserUpdateInput {
         name: String!
         email: String!
         photo: String!
+        class: String!
     }
 
     input UserUpdatePasswordInput{
@@ -41,8 +45,4 @@ const userMutations = `
     deleteUser: Boolean
 `;
 
-export{
-    userTypes,
-    userQueries,
-    userMutations
-}
+export { userTypes, userQueries, userMutations };
