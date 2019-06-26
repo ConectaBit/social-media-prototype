@@ -4,7 +4,7 @@ const postTypes = `
         id: ID!
         title: String!
         content: String!
-        photo: String!
+        description: String!
         createdAt: String!
         updatedAt: String!
         author: User!
@@ -15,7 +15,7 @@ const postTypes = `
     input PostInput {
         title: String!
         content: String!
-        photo: String!
+        description: String!
     }
 `;
 

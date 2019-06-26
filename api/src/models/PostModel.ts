@@ -8,7 +8,7 @@ export interface PostAttributes {
     id?: number;
     title?: string;
     content?: string;
-    photo?: string;
+    description?: string;
     author?: number;
     createdAt?: string;
     updatedAt?: string;
@@ -34,8 +34,8 @@ export default (Sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             type: DataTypes.TEXT,
             allowNull: false
         },
-        photo: {
-            type: DataTypes.BLOB({
+        description: {
+            type: DataTypes.TEXT({
                 length: 'long'
             }),
             allowNull: false
