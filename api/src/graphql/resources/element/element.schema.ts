@@ -6,8 +6,7 @@ const elementTypes = `
         name: String!
         author: User!
         createdAt: String
-        updatedAt: String
-        comments(first: Int, offset: Int): [Comment! ]! 
+        updatedAt: String 
     }
 
     input ElementInput {

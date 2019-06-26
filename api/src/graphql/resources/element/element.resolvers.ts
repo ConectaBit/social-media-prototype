@@ -21,6 +21,97 @@ export const elementResolvers = {
   },
 
   Query: {
-      
+    elements: (
+      parent,
+      { first = 10, offset = 0 },
+      { db }: { db: DbConnection },
+      info: GraphQLResolveInfo
+    ) => {
+      return db.Element.findAll({
+        limit: first,
+        offset: offset
+      }).catch(handleError);
+    },
+
+    element: (
+      parent,
+      { id },
+      { db }: { db: DbConnection },
+      info: GraphQLResolveInfo
+    ) => {
+      id = parseInt(id);
+      return db.Element.findById(id)
+        .then((element: ElementInstance) => {
+          throwError(!element, `Element with id ${id} not found`);
+          return element;
+        })
+        .catch(handleError);
+    }
+  },
+
+  Mutation: {
+    createElement: compose(...authResolvers)(
+      (
+        parent,
+        { input },
+        { db, authUser }: { db: DbConnection; authUser: AuthUser },
+        info: GraphQLResolveInfo
+      ) => {
+        input.author = authUser.id;
+        return db.sequelize
+          .transaction((t: Transaction) => {
+            return db.Element.create(input, { transaction: t });
+          })
+          .catch(handleError);
+      }
+    ),
+
+    updateElement: compose(...authResolvers)(
+      (
+        parent,
+        { id, input },
+        { db, authUser }: { db: DbConnection; authUser: AuthUser },
+        info: GraphQLResolveInfo
+      ) => {
+        id = parseInt(id);
+        return db.sequelize
+          .transaction((t: Transaction) => {
+            return db.Element.findById(id).then((element: ElementInstance) => {
+              throwError(!element, `Post with id ${id} not found`);
+              throwError(
+                element.get("author") != authUser.id,
+                "Unauthorized! You can only edit posts by yourself"
+              );
+              input.author = authUser.id;
+              return element.update(input, { transaction: t });
+            });
+          })
+          .catch(handleError);
+      }
+    ),
+
+    deleteElement: compose(...authResolvers)(
+      (
+        parent,
+        { id },
+        { db, authUser }: { db: DbConnection; authUser: AuthUser },
+        info: GraphQLResolveInfo
+      ) => {
+        id = parseInt(id);
+        return db.sequelize
+          .transaction((t: Transaction) => {
+            return db.Element.findById(id).then((element: ElementInstance) => {
+              throwError(!element, `Post with id ${id} not found`);
+              throwError(
+                element.get("author") != authUser.id,
+                "Unauthorized! You can only edit posts by yourself"
+              );
+              return element.destroy({ transaction: t })
+              //.then(element => !!element);
+            });
+          })
+          .catch(handleError);
+      }
+    )
   }
 };
