@@ -6,16 +6,19 @@ const elementTypes = `
         name: String!
         author: User!
         createdAt: String
-        updatedAt: String 
+        updatedAt: String
+        post: Post!
     }
 
     input ElementInput {
         name: String!
         description: String!
+        post: Int!
     }
 `;
 
 const elementQueries = `
+    elementsByPost(postId: ID!, first: Int, offset: Int): [ Element !]!
     elements(first: Int, offset: Int): [ Element! ]!
     element(id: ID!): Element
 `;
