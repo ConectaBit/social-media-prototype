@@ -8,7 +8,6 @@ export interface ElementAttributes {
   id?: number;
   description?: string;
   name?: string;
-  //tags?: string[];
   author?: number;
   createdAt?: string;
   updatedAt?: string;

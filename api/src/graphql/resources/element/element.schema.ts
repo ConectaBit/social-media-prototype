@@ -2,7 +2,7 @@ const elementTypes = `
 
     type Element {
         id: ID!
-        description: String!
+        description: String
         name: String!
         author: User!
         createdAt: String
@@ -12,7 +12,7 @@ const elementTypes = `
 
     input ElementInput {
         name: String!
-        description!
+        description: String!
     }
 `;
 

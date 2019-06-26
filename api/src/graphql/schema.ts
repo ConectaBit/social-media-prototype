@@ -13,6 +13,8 @@ import { tokenResolvers } from './resources/token/token.resolvers';
 
 import { makeExecutableSchema } from 'graphql-tools'    
 import { merge } from 'lodash';
+import { elementTypes } from './resources/element/element.schema';
+import { elementResolvers } from './resources/element/element.resolvers';
 
 
 
@@ -20,7 +22,8 @@ const resolvers = merge(
     commentResolvers,
     postResolvers,
     tokenResolvers,
-    userResolvers
+    userResolvers,
+    elementResolvers
 );
 
 const SchemaDefinition = `
@@ -38,7 +41,8 @@ export default makeExecutableSchema({
         commentTypes,
         postTypes,
         tokenTypes,
-        userTypes
+        userTypes,
+        elementTypes
     ],
     resolvers
 });
