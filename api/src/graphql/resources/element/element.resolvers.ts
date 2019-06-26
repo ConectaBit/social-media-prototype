@@ -17,6 +17,15 @@ export const elementResolvers = {
       info: GraphQLResolveInfo
     ) => {
       return db.User.findById(element.get("author")).catch(handleError);
+    },
+
+    post: (
+      element,
+      args,
+      { db }: { db: DbConnection },
+      info: GraphQLResolveInfo
+    ) => {
+      return db.Post.findById(element.get("post")).catch(handleError);
     }
   },
 
@@ -46,6 +55,16 @@ export const elementResolvers = {
           return element;
         })
         .catch(handleError);
+    },
+
+    elementsByPost: (parent, {postId, first = 10, offset = 0}, {db}: {db: DbConnection}, info: GraphQLResolveInfo) => {
+      postId = parseInt(postId);
+      return db.Element.findAll({
+        where: {post: postId},
+        limit: first,
+        offset: offset
+      })
+      .catch(handleError);
     }
   },
 
@@ -106,7 +125,7 @@ export const elementResolvers = {
                 element.get("author") != authUser.id,
                 "Unauthorized! You can only edit posts by yourself"
               );
-              return element.destroy({ transaction: t })
+              return element.destroy({ transaction: t });
               //.then(element => !!element);
             });
           })
