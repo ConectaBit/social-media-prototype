@@ -3,8 +3,8 @@ const elementTypes = `
     type Element {
         id: ID!
         description: String!
-        tags: []
         name: String!
+        author: User!
         createdAt: String
         updatedAt: String
         comments(first: Int, offset: Int): [Comment! ]! 
@@ -13,9 +13,7 @@ const elementTypes = `
     input ElementInput {
         name: String!
         description!
-        tags: []
     }
-
 `;
 
 const elementQueries = `

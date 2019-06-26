@@ -9,6 +9,7 @@ export interface ElementAttributes {
   description?: string;
   name?: string;
   //tags?: string[];
+  author?: number;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -42,7 +43,7 @@ export default (
       name: {
         type: DataTypes.STRING,
         allowNull: false
-      },
+      }
 
       //tags: {
       //  type: DataTypes.ARRAY(DataTypes.STRING),
@@ -53,6 +54,16 @@ export default (
       tableName: "elements"
     }
   );
+
+  Element.associate = (models: ModelsInterface): void => {
+    Element.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false,
+        field: "author",
+        name: "author"
+      }
+    });
+  };
 
   return Element;
 };
