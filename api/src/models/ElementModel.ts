@@ -9,6 +9,7 @@ export interface ElementAttributes {
   description?: string;
   name?: string;
   author?: number;
+  post?: number;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -60,6 +61,14 @@ export default (
         allowNull: false,
         field: "author",
         name: "author"
+      }
+    });
+
+    Element.belongsTo(models.Post, {
+      foreignKey: {
+        allowNull: false,
+        field: "post",
+        name: "post"
       }
     });
   };
