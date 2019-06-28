@@ -35,9 +35,7 @@ export default (Sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             allowNull: false
         },
         description: {
-            type: DataTypes.TEXT({
-                length: 'long'
-            }),
+            type: DataTypes.TEXT,
             allowNull: false
         }
     }, {
