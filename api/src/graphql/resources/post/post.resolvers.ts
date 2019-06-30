@@ -27,6 +27,16 @@ export const postResolvers = {
                     offset: offset
                 })
                 .catch(handleError);
+        },
+
+        elements: (post, {first = 20, offset = 0}, {db}: {db: DbConnection}, info: GraphQLResolveInfo ) => {
+            return db.Element
+                .findAll({
+                    where: {post: post.get('id')},
+                    limit: first,
+                    offset: offset
+                })
+                .catch(handleError)
         }
 
 
