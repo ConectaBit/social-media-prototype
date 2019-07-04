@@ -4,11 +4,13 @@ import { Mutation } from './mutation';
 import { commentTypes } from './resources/comment/comment.schema';
 import { postTypes } from './resources/post/post.schema';
 import { userTypes } from './resources/user/user.schema';
+import {biaTypes} from './resources/bia/bia.schema'
 import { tokenTypes } from './resources/token/token.schema';
 
 import { commentResolvers } from './resources/comment/comment.resolvers';
 import { postResolvers } from './resources/post/post.resolvers';
 import { userResolvers } from './resources/user/user.resolvers';
+import {biaResolvers} from './resources/bia/bia.resolvers'
 import { tokenResolvers } from './resources/token/token.resolvers';
 
 import { makeExecutableSchema } from 'graphql-tools'    
@@ -23,7 +25,8 @@ const resolvers = merge(
     postResolvers,
     tokenResolvers,
     userResolvers,
-    elementResolvers
+    elementResolvers,
+    biaResolvers
 );
 
 const SchemaDefinition = `
@@ -42,7 +45,8 @@ export default makeExecutableSchema({
         postTypes,
         tokenTypes,
         userTypes,
-        elementTypes
+        elementTypes,
+        biaTypes
     ],
     resolvers
 });
