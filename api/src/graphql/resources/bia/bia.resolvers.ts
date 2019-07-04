@@ -16,9 +16,15 @@ export const biaResolvers = {
     },
 
     mathematics: (parent, { start = 1 }, info: GraphQLResolveInfo) => {
-      return fetch(`https://bia-api.herokuapp.com/api/mathematics/${start}`).then(
-        res => res.json()
-      );
+      return fetch(
+        `https://bia-api.herokuapp.com/api/mathematics/${start}`
+      ).then(res => res.json());
+    },
+
+    phisics: (parent, { start = 1 }, info: GraphQLResolveInfo) => {
+      return fetch(
+        `https://bia-api.herokuapp.com/api/phisics/${start}`
+      ).then(res => res.json());
     }
   }
 };
